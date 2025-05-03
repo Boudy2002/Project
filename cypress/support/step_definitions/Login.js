@@ -1,5 +1,5 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
-import loginPage from "../Pages/loginPage";
+import loginPage from "../Pages/LoginPage";
 
 Given("I am on the login page", () => {
   cy.openSite()
@@ -11,7 +11,7 @@ When("I login with username {string} and password {string}", (username, password
 })
 
 Then("I should see the home page", () => {
-  cy.url().should('include', '/')
+  loginPage.verifyUsername()
 })
 
 Then("I should see an error message", () => {

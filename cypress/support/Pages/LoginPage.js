@@ -31,6 +31,12 @@ class LoginPage {
     cy.get('.loader', { timeout: 10000 }).should('not.be.visible')
     cy.get('#sign_in_btn').should('be.visible').click()
   }
+
+  verifyUsername(){
+    cy.fixture('SignInUser').then((user) => {
+        cy.get('.hi-user').should('contain.text', user.username);
+    });
+}
 }
   
   export default new LoginPage()

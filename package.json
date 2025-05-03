@@ -1,0 +1,30 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "blh",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AbouShmeila",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0"
+  },
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
+    "cypress": "^14.3.2",
+    "esbuild": "^0.25.3",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.8.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/[filepath]/**/*.{js,ts}",
+      "cypress/e2e/[filepath].{js,ts}",
+      "cypress/support/step_definitions/**/*.{js,ts}"
+    ]
+  }
+}

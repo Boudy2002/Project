@@ -1,0 +1,43 @@
+{
+    "validUser": {
+    "username": "aboushmeila2",
+    "email": "aboushmeila@example.com",
+    "password": "Boudy@1234",
+    "firstName": "Abdelrahman",
+    "lastName": "Ayman",
+    "phone": "0123456789",
+    "country": "Egypt",
+    "city": "Beheira",
+    "address": "12 abc St",
+    "state": "Damanhour",
+    "postalCode": "12345"
+  },
+  "invalidUser": {
+    "username": "ab", 
+    "email": "mail@", 
+    "password": "123", 
+    "confirmPassword": "321", 
+    "firstName": "45648",
+    "lastName": "156132",
+    "phone": "abc123",
+    "country": "",
+    "city": " ",
+    "address": " ",
+    "state": "Damanhour",
+    "postalCode": "12"
+  },
+  "existingUser": {
+    "username": "aboushmeila2",
+    "email": "aboushmeila@example.com",
+    "password": "Boudy@1234",
+    "firstName": "Abdelrahman",
+    "lastName": "Ayman",
+    "phone": "0123456789",
+    "country": "Egypt",
+    "city": "Beheira",
+    "address": "12 abc St",
+    "state": "Damanhour",
+    "postalCode": "12345"
+  }
+}
+  

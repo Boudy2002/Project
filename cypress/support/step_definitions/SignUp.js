@@ -15,7 +15,7 @@ Given("I open the website", () => {
   
   When("I fill the registration form with valid {string}", (userData) => {
     cy.fixture(userData).then((user) => {
-        SignUpPage.signUp(user.validUser)
+        SignUpPage.signUpNew(user.validUser)
     })
   })
 

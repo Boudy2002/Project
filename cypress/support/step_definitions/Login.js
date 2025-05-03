@@ -11,7 +11,7 @@ When("I login with username {string} and password {string}", (username, password
 })
 
 Then("I should see the home page", () => {
-  cy.url().should('include', '/home')
+  cy.url().should('include', '/')
 })
 
 Then("I should see an error message", () => {

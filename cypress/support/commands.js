@@ -36,6 +36,11 @@ Cypress.Commands.add("addProductToCart", (productName) => {
     cy.contains(productName).click()
     cy.get(".add-to-cart").click()
 })
+Cypress.Commands.add('generateRandomUsername', () => {
+    const randomName = require('random-name');
+    let username = randomName.first();
+    return username;
+  });
   
 //
 // -- This is a child command --

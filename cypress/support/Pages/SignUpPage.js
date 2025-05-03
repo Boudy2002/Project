@@ -1,8 +1,18 @@
 class SignUpPage {
+    finalUsername;
+    
     fillUsername(username) {
       cy.get('input[name="usernameRegisterPage"]').type(username)
+      this.finalUsername = username;
     }
-  
+
+    fillExistingUsername() {
+        const Fakeusername = `user_${Math.random().toString(36).substring(2, 10)}`;
+        cy.get('input[name="usernameRegisterPage"]').type(Fakeusername);
+        this.finalUsername = Fakeusername;
+
+    }
+
     fillEmail(email) {
       cy.get('input[name="emailRegisterPage"]').type(email)
     }
@@ -43,9 +53,18 @@ class SignUpPage {
       this.acceptTerms()
     }
 
+    signUpNew(user) {
+      this.fillExistingUsername()
+      this.fillEmail(user.email)
+      this.fillPassword(user.password)
+      this.fillPersonalDetails(user)
+      this.fillAddress(user)
+      this.acceptTerms()
+    }
+    
     verifyUsername(){
         cy.fixture('SignUpUser').then((user) => {
-            cy.get('.hi-user').should('contain.text', user.validUser.username);
+            cy.get('.hi-user').should('contain.text', this.finalUsername);
         });
     }
 

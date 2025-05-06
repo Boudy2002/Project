@@ -6,9 +6,9 @@ class CartPage {
 
     chooseQuantity(quantity){
       cy.get('input[name="quantity"]').clear().type(quantity.toString());
-      cy.readFile('cypress/fixtures/orderData.json').then((data = {}) => {
+      cy.readFile('cypress/data/OrderData.json').then((data = {}) => {
         data.quantity = parseInt(quantity);
-        cy.writeFile('cypress/fixtures/orderData.json', data);
+        cy.writeFile('cypress/data/OrderData.json', data);
       });
     }
 
@@ -16,24 +16,24 @@ class CartPage {
       let productPrice = 0;
       cy.get('h1.roboto-regular.screen768.ng-binding').scrollIntoView().invoke('text').then((text) => {
         const productName = text.trim();
-        cy.readFile('cypress/fixtures/OrderData.json').then((data) => {
+        cy.readFile('cypress/data/OrderData.json').then((data) => {
           data.product = productName;
-          cy.writeFile('cypress/fixtures/OrderData.json', data);
+          cy.writeFile('cypress/data/OrderData.json', data);
         });
       });
       cy.get('h2.roboto-thin.screen768.ng-binding').invoke('text').then((rawText) => {
         const priceText = rawText.trim().split('\n')[0].trim();
         productPrice = parseFloat(priceText.replace(/[^0-9.]/g, ''));
-        cy.readFile('cypress/fixtures/OrderData.json').then((data) => {
+        cy.readFile('cypress/data/OrderData.json').then((data) => {
           data.price = productPrice;
-          cy.writeFile('cypress/fixtures/OrderData.json', data);
+          cy.writeFile('cypress/data/OrderData.json', data);
         });
       });
       cy.get('button[name="save_to_cart"]').should("be.visible").click();
     }
 
     verifyCartItemCount() {
-      cy.readFile('cypress/fixtures/OrderData.json').then((data) => {
+      cy.readFile('cypress/data/OrderData.json').then((data) => {
         cy.get('#shoppingCartLink .cart.ng-binding').should('have.text', data.quantity.toString());
       });
     }
@@ -57,7 +57,7 @@ class CartPage {
     }
 
     verifyCartCalculations(){
-      cy.readFile('cypress/fixtures/orderData.json').then((data) => {
+      cy.readFile('cypress/data/OrderData.json').then((data) => {
         const expectedTotal = (data.price * data.quantity).toFixed(2);
         cy.get('#shoppingCartLink').trigger('mouseover');
         cy.get('#toolTipCart').should('be.visible');

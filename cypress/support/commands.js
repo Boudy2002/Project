@@ -27,21 +27,23 @@ Cypress.Commands.add("openRegisterPage", () => {
 })
 
 Cypress.Commands.add("login", (username, password) => {
-    cy.get("#username").type(username)
-    cy.get("#password").type(password)
-    cy.get("#sign_in_btn").click()
+    cy.fixture('SignInUser').then((user) => {
+        cy.get('input[name="username"]', { timeout: 30000 }).type(user.username)
+        cy.get('input[name="password"]', { timeout: 30000 }).type(user.password)
+        cy.get("#sign_in_btn").click()
+        cy.wait(1500);
+    });
 })
-  
-Cypress.Commands.add("addProductToCart", (productName) => {
-    cy.contains(productName).click()
-    cy.get(".add-to-cart").click()
-})
+
 Cypress.Commands.add('generateRandomUsername', () => {
     const randomName = require('random-name');
     let username = randomName.first();
     return username;
-  });
-  
+});
+
+Cypress.Commands.add('clearCartData', () => {
+    cy.writeFile('cypress/fixtures/OrderData.json', {});
+});
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

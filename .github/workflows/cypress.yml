@@ -14,6 +14,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: List project files for debugging
+        run: ls -R
 
       - name: Set up Node.js
         uses: actions/setup-node@v2

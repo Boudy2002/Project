@@ -16,14 +16,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm install  # Install project dependencies
+          npm install
           npm install cypress --save-dev
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           record: true
-          command: npx cypress run
+          command: npx cypress run --record --key 08c79f82-6a96-4656-9803-6fa2c4c6f1a0
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

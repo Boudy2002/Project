@@ -44,6 +44,30 @@ Cypress.Commands.add('generateRandomUsername', () => {
 Cypress.Commands.add('clearCartData', () => {
     cy.writeFile('cypress/fixtures/OrderData.json', {});
 });
+
+Cypress.Commands.add('chooseProduct', (product) => {
+    cy.contains('a.productName', product, { timeout: 10000 }).scrollIntoView().should('be.visible').click({ force: true });
+});
+
+Cypress.Commands.add('clickCategory', (category) => {
+    const categoryMap = {
+        Laptops: "#laptopsTxt",
+        Tablets: "#tabletsTxt",
+        Speakers: "#speakersTxt",
+        Mice: "#miceTxt",
+        Headphones: "#headphonesTxt"
+      };
+  
+      const selector = categoryMap[category];
+      if (!selector) throw new Error(`Unknown category: ${category}`);
+  
+      cy.get(selector).should('be.visible').click({ force: true });
+      cy.url().should("include", `/category/${category}`);
+});
+
+Cypress.Commands.add('addToCart', () => {
+    cy.get('button[name="save_to_cart"]').should("be.visible").click();
+});
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })

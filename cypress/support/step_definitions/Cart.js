@@ -5,18 +5,18 @@ import HomePage from '../Pages/HomePage';
 const cartPage = new CartPage();
 const homePage = new HomePage();
 
-Given('the user visits the home page', () => {
+Given('the user is logged in', () => {
     cy.openSite();
     cy.openLoginMenu();
     cy.login();
 });
 
 When('the user choose the category {string}', (category) => {
-  homePage.clickCategory(category);
+  cy.clickCategory(category);
 });
 
 When('choose a porduct {string}', (product) => {
-  cartPage.chooseProduct(product);
+  cy.chooseProduct(product);
 })
 
 When('choose quantity of {int}', (quantity) => {

@@ -1,9 +1,5 @@
 class CartPage {
 
-    chooseProduct(product){
-      cy.contains('a.productName', product, { timeout: 10000 }).scrollIntoView().should('be.visible').click({ force: true });
-    }
-
     chooseQuantity(quantity){
       cy.get('input[name="quantity"]').clear().type(quantity.toString());
       cy.readFile('cypress/data/OrderData.json').then((data = {}) => {

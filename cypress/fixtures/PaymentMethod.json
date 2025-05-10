@@ -1,0 +1,32 @@
+{
+    "Valid": {
+        "SafePay": {
+            "username": "aboushmeila",
+            "password": "Password123"
+        },
+        "MasterCredit": {
+            "CardNumber": 1234567890123456,
+            "CVV": 4231,
+            "Date": {
+                "Month": 11,
+                "Year": 2030
+            },
+            "Name": "Abdelrahman"
+        }
+    },
+    "Invalid": {
+        "SafePay": {
+            "username": "abou",
+            "password": "password"
+        },
+        "MasterCredit": {
+            "CardNumber": 12345678,
+            "CVV": 11,
+            "Date": {
+                "Month": 11,
+                "Year": 2024
+            },
+            "Name": "A"
+        }
+    }
+}
